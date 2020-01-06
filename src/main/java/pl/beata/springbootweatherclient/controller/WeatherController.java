@@ -13,21 +13,7 @@ public class WeatherController {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private Parent[] getCities(String city) {
-        Parent[] cities = restTemplate.getForObject("https://www.metaweather.com/api/location/search/?query={city}",
-                Parent[].class,
-                city);
 
-        return cities;
-    }
-
-    private Weather getactualWeather(Integer woeid) {
-        Weather weather = restTemplate.getForObject("https://www.metaweather.com/api/location/{woeid}",
-                Weather.class,
-                woeid);
-
-        return weather;
-    }
 
     @GetMapping
     public String index() {
@@ -61,5 +47,19 @@ public class WeatherController {
         }
 
         return "weather";
+    }
+
+    private Parent[] getCities(String city) {
+
+        return restTemplate.getForObject("https://www.metaweather.com/api/location/search/?query={city}",
+                Parent[].class,
+                city);
+    }
+
+    private Weather getactualWeather(Integer woeid) {
+
+        return restTemplate.getForObject("https://www.metaweather.com/api/location/{woeid}",
+                Weather.class,
+                woeid);
     }
 }
