@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List News</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>Author</th>
+        <th>Descendants</th>
+        <th>Score</th>
+        <th>Text</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Url</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="n : ${news}">
+        <td th:text="${n.by}" />
+        <td th:text="${n.descendants}" />
+        <td th:text="${n.score}" />
+        <td th:text="${n.text}" />
+        <td th:text="${n.title}" />
+        <td th:text="${n.type}" />
+        <td th:text="${n.url}" />
+        <td><a th:href="@{/modify/{newId}(newId=${n.id})}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

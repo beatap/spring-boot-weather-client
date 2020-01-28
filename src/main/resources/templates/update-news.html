@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update News</title>
+</head>
+<body>
+
+<div>
+    <h3>Update News</h3>
+
+    <form th:action="@{/update}" th:object="${news}" method="post">
+        <p>Descendants: <input type="text" th:field="*{descendants}"></p>
+        <p>Score: <input type="text" th:field="*{score}"></p>
+        <p>Text: <input type="text" th:field="*{text}"></p>
+        <p>Title: <input type="text" th:field="*{title}"></p>
+        <p>Type: <input type="text" th:field="*{type}"></p>
+        <p>Url: <input type="text" th:field="*{url}"></p>
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{time}">
+        <input type="hidden" th:field="*{by}">
+
+        <input type="submit" value="Update News">
+    </form>
+</div>
+
+</body>
+</html>
